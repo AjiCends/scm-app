@@ -1,0 +1,27 @@
+.content{
+    margin-left:280px; 
+    min-height: 100vh;       
+}
+
+.navbar-admin{
+    display: none;
+}
+
+.loader{
+    /* width:100%; 
+    height:100%;  */
+    z-index: 1081; 
+    /* top:0px; 
+    left:0px; 
+    bottom:0px */
+}
+
+@media screen and (max-width: 576px) {
+    .navbar-admin{
+        display: block;
+    }
+
+    .content{
+        margin-left:0px;               
+    }
+}

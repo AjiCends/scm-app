@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -14,7 +15,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.bahan-baku.index');
     }
 
     /**
@@ -46,7 +47,10 @@ class MaterialController extends Controller
      */
     public function show($id)
     {
-        //
+        $material = Material::find($id);
+        if ($material) {
+            return view('admin.bahan-baku.detail', compact('material'));
+        }
     }
 
     /**

@@ -12,8 +12,13 @@
                 </button>
             </div>
         </div>
+    </div>    
+
+    <div>
+        @livewire('admin.bahan-baku-livewire')      
     </div>
-    @livewire('admin.bahan-baku-livewire')        
-    {{-- @livewire('admin.create-bahan-baku-livewire') --}}
+    <div>
+        @livewire('admin.create-bahan-baku-livewire')      
+    </div>    
 </div>
 @endsection

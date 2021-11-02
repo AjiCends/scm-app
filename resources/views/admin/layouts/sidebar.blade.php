@@ -1,5 +1,5 @@
 <div class="sidebar shadow p-3 me-3 fixed-top">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <a href="{{ route('bahan-baku.index') }}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold">SCM-APP</span>
     </a>
@@ -10,7 +10,7 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Daftar Bahan Baku</a></li>
+            <li><a href="{{ route('bahan-baku.index') }}" class="link-dark rounded">Daftar Bahan Baku</a></li>
             {{-- <li><a href="#" class="link-dark rounded">Updates</a></li>
             <li><a href="#" class="link-dark rounded">Reports</a></li> --}}
           </ul>

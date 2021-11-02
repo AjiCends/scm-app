@@ -4,24 +4,28 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Material;
-use Livewire\WithFileUploads;
 
 class BahanBakuLivewire extends Component
 {
-    use WithFileUploads;
-
     public $materials;
-    public $name;
-    public $image;
+    public $deleteId;    
+    public $deletedName;
+    public $closeDelete;    
+
+    protected $listeners = [
+        "materialAdded" => "materialAdded",
+        "editBahanBaku" => "editBahanBaku"
+    ];
 
     public function mount()
-    {
+    {        
         $this->getMaterial();
+        $this->closeDelete = 0;
     }
 
     public function render()
-    {
-        $this->getMaterial();
+    {  
+        $this->getMaterial();        
         return view('livewire.admin.bahan-baku-livewire');
     }
 
@@ -31,34 +35,45 @@ class BahanBakuLivewire extends Component
         $this->materials = $data;
 
     }
+    
+    public function materialAdded($data)
+    {
+        // dd($data);
+    }
 
-    public function store()
-    {        
-        $this->validate([
-            'name' => 'required|max:500',
-            'image' => 'required'            
-        ]);
+    public function editBahanBaku($data)
+    {
+        // dd($data);
+    }
 
-        $imgStore = $this->image->storePublicly('public/bahan-baku');
-        $imgPath = substr($imgStore,7);        
-        
+    public function displayDeleteDialog($deletedName,$deletedId)
+    {
+        $this->closeDelete = 1;
+        $this->deletedName = $deletedName;
+        $this->deleteId = $deletedId;
+    }
 
-        $data = [
-            'name' => $this->name,     
-            'image' => $imgPath
-        ];        
+    public function closeDeleteDialog()
+    {
+        $this->closeDelete = 0;
+    }
 
-        try {                        
-            Material::create($data);            
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+    public function deleteBahanBaku()
+    {
+        $material = Material::find($this->deleteId);
+        if (!is_null($material)) {
+            $material->delete();
+            $this->resetInput();
+            $this->closeDeleteDialog();
+        }        
+
     }
 
     public function resetInput()
     {
-        $this->name = null;
-        $this->image = null;
+        $this->deleteId = null;
+        $this->deletedName = null;
     }
+
 }
 

@@ -1,4 +1,4 @@
-<div>        
+<div>
     <table class="table">
         <thead class="table-dark">
             <tr>
@@ -7,57 +7,47 @@
                 <th scope="col">Gambar</th>
                 <th scope="col">Aksi</th>
             </tr>
-        </thead>  
-        <tbody>
-            @foreach ($materials as $item)
+        </thead>
+        <tbody wire:ignore.self>            
+            @foreach ($materials as $item)                               
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->name }}</td>
                     <td><a href="{{ asset('storage/' . $item->image) }}" target="_blank"><i
                                 class="fas fa-image text-dark"></i></a></td>
-                    <td>asdf</td>
-                </tr>
-            @endforeach
-            <div wire:loading wire:target='store'>                
-                loading new data ...                
+                    <td>
+                        <a class="btn btn-dark mx-2" href="{{ route('bahan-baku.show',$item->id) }}">Detail</a>
+                        <button class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#modalBahanBaku{{ $item->id }}">
+                            <i class="fas fa-edit"></i>Edit
+                        </button> 
+                        <button class="btn btn-danger mx-2" wire:click="displayDeleteDialog('{{$item->name}}','{{$item->id}}')">
+                           <i class="fas fa-trash"></i> Hapus
+                        </button>                           
+                    </td>
+                </tr>                    
+                <div>
+                    @livewire('admin.edit-bahan-baku-livewire', [$item], key($item->id))                             
+                </div>                                                                                                                        
+            @endforeach            
+            <div wire:loading wire:target='store'>
+                loading new data ...
             </div>
         </tbody>
     </table>
-        <!-- Modal -->
-        <div class="modal fade" id="createBahanBaku" tabindex="-1" aria-labelledby="createBahanBakuLabel"
-        aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createBahanBakuLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="" wire:submit.prevent='store'>
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="name">Nama Bahan Baku</label>
-                            <input wire:model='name' type="text" class="form-control" name="name">
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="image">Gambar</label>
-                            <input wire:model='image' type="file" name="image" class="form-control">
-                        </div> 
-                        <p>Photo Preview:</p>                                                
-                        <div wire:loading wire:target='image'>                            
-                            <img src="{{ asset('gif/loading.gif') }}" alt="" width="100px" class="">                                                                                                    
-                        </div>
-                        @if ($image)
-                            <img src="{{ $image->temporaryUrl() }}" class="img-fluid">                            
-                        @endif                       
-                    </div>                                                                              
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">Kirim</button>
-                    </div>
-                </form>
+    @if ($closeDelete == 1)
+        <div class="position-fixed top-50 start-50 translate-middle bg-white shadow p-3" style="width:400px; height:fit-content;">
+            <div class="text-center fw-bold">
+                <p>Peringatan !</p>
             </div>
-        </div>
-    </div>          
+            <div class="text-center align-center">
+                <p>Apakah anda yakin untuk menghapus <span class="fw-bold">{{ $deletedName }}</span> ?</p>            
+            </div>
+            <div class="d-flex justify-content-end align-items-center border-top pt-3">
+                <button class="btn btn-secondary mx-2" wire:click='closeDeleteDialog'>Batal</button>
+                <button class="btn btn-dark mx-2" wire:click='deleteBahanBaku'>Ya</button>
+            </div>
+        </div>        
+    @endif
+        
 </div>

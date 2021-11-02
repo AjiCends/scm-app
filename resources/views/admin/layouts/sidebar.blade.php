@@ -6,13 +6,21 @@
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Bahan Baku
+          Dashboard
         </button>
         <div class="collapse show" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="{{ route('bahan-baku.index') }}" class="link-dark rounded">Daftar Bahan Baku</a></li>
-            {{-- <li><a href="#" class="link-dark rounded">Updates</a></li>
-            <li><a href="#" class="link-dark rounded">Reports</a></li> --}}
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
+            <li><a href="{{ route('admin.dashboard') }}" class="link-dark rounded">Dashboard</a></li>            
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#bahan-baku-collapse" aria-expanded="false">
+          Bahan Baku
+        </button>
+        <div class="collapse" id="bahan-baku-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
+            <li><a href="{{ route('bahan-baku.index') }}" class="link-dark rounded">Daftar Bahan Baku</a></li>            
           </ul>
         </div>
       </li>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MaterialController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin.bahan-baku.index');
 // });
 
+Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
 Route::get('/bahan-baku', [MaterialController::class,'index'])->name('bahan-baku.index');
 Route::get('/bahan-baku/store/{id}', [MaterialController::class,'show'])->name('bahan-baku.show');

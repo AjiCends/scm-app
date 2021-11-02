@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CaryingCost extends Model
 {
     use HasFactory;    
-    protected $table = 'order_costs';
+    protected $table = 'carying_costs';
     protected $fillable = ['material_id','name','cost'];
 
     public function material()

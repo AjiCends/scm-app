@@ -2,40 +2,40 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\OrderCost;
+use App\Models\CaryingCost;
 use Livewire\Component;
 
-class OrderCostLivewire extends Component
+class CarryingCostLivewire extends Component
 {
     public $material;
-    public $order_costs;
+    public $carrying_costs;
     public $deleteId;    
     public $deletedName;
     public $closeDelete; 
 
     protected $listeners = [
-        'postOrderCost' => 'postOrderCost',
+        'postCarryingCost' => 'postCarryingCost',
         'deletedCost' => 'deletedCost',
     ];
 
     public function mount($material)
     {
         $this->material = $material;
-        $this->getOrderCost($material);
+        $this->getCarryingCost($material);
         $this->closeDelete = 0;
     }
     public function render()
     {                      
-        $this->getOrderCost($this->material);  
-        return view('livewire.admin.order-cost-livewire');
+        $this->getCarryingCost($this->material);  
+        return view('livewire.admin.carrying-cost-livewire');
     }
 
-    public function getOrderCost($material)
-    {
-        $this->order_costs = $material->orderCost;        
+    public function getCarryingCost($material)
+    {                
+        $this->carrying_costs = $material->caryingCost;             
     }
 
-    public function postOrderCost($data)
+    public function postCarryingCost($data)
     {
         //
     }
@@ -53,11 +53,11 @@ class OrderCostLivewire extends Component
         return $this->closeDelete;
     }
 
-    public function deleteOderCost()
+    public function deleteCarryingCost()
     {
-        $order_costs = OrderCost::find($this->deleteId);
-        if (!is_null($order_costs)) {
-            $order_costs->delete();
+        $carrying_costs = CaryingCost::find($this->deleteId);
+        if (!is_null($carrying_costs)) {
+            $carrying_costs->delete();
             $this->emit('deletedCost');
             $this->resetInput();
             $this->closeDeleteDialog();                      

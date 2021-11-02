@@ -15,9 +15,9 @@ class CreateEoqsTable extends Migration
     {
         Schema::create('eoqs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('eoq')->nullable();
-            $table->bigInteger('material_need')->nullable();
-            $table->bigInteger('frekwensi')->nullable();
+            $table->decimal('eoq')->nullable();
+            $table->decimal('material_need')->nullable();
+            $table->decimal('frekwensi')->nullable();
             $table->unsignedBigInteger('material_id')->nullable();
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('set null');
             $table->timestamps();

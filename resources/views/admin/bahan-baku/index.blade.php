@@ -1,4 +1,7 @@
 @extends('admin.layouts.app')
+@push('styles')
+    <link rel="stylesheet" href="/tamplate/admin/css/bahan-baku.css">
+@endpush
 @section('content')
 <div class="">    
     <div class="row mb-4">

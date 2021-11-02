@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/tamplate/admin/css/app.css" type="text/css">
     @stack('styles')    
     @livewireStyles()
-    <title>dashboard</title>
+    @yield('title')
 </head>
 <body>
     @yield('loader')

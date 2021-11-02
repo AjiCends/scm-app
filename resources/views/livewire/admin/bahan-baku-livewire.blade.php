@@ -1,5 +1,5 @@
 <div>
-    <table class="table">
+    <table class="table" id="daftarBahanBaku">
         <thead class="table-dark">
             <tr>
                 <th scope="col">#</th>
@@ -16,9 +16,11 @@
                     <td><a href="{{ asset('storage/' . $item->image) }}" target="_blank"><i
                                 class="fas fa-image text-dark"></i></a></td>
                     <td>
-                        <a class="btn btn-dark mx-2" href="{{ route('bahan-baku.show',$item->id) }}">Detail</a>
+                        <button class="btn btn-dark mx-2">
+                            <a class="text-decoration-none text-white" href="{{ route('bahan-baku.show',$item->id) }}"><i class="fas fa-eye"></i> Detail</a>
+                        </button>
                         <button class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#modalBahanBaku{{ $item->id }}">
-                            <i class="fas fa-edit"></i>Edit
+                            <i class="fas fa-edit"></i> Edit
                         </button> 
                         <button class="btn btn-danger mx-2" wire:click="displayDeleteDialog('{{$item->name}}','{{$item->id}}')">
                            <i class="fas fa-trash"></i> Hapus

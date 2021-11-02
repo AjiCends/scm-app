@@ -6,7 +6,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+              Dashboard
+            </button>
+            <div class="collapse show" id="home-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
+                <li><a href="{{ route('admin.dashboard') }}" class="link-dark rounded">Dashboard</a></li>            
+              </ul>
+            </div>
+          </li>
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#bahan-baku-collapse" aria-expanded="false">
+              Bahan Baku
+            </button>
+            <div class="collapse" id="bahan-baku-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
+                <li><a href="{{ route('bahan-baku.index') }}" class="link-dark rounded">Daftar Bahan Baku</a></li>            
+              </ul>
+            </div>
+          </li>
+          {{-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
@@ -25,7 +45,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>

@@ -15,6 +15,8 @@ class EoqLivewire extends Component
     public $eoq;
     public $frekwensi;
     public $eoqList;
+
+    public $schedule_eoq = 0;        
     
     protected $listeners = [
         'postOrderCost' => 'postOrderCost',
@@ -45,7 +47,7 @@ class EoqLivewire extends Component
             $frekwensi = $amount / $eoq;
 
             $this->eoq = $eoq;
-            $this->frekwensi = $frekwensi;
+            $this->frekwensi = round($frekwensi);
         }else{
             $this->eoq = null;
             $this->frekwensi = null;
@@ -97,6 +99,12 @@ class EoqLivewire extends Component
         }
         $this->carrying_costs = $answer;             
     }
+
+    public function setScheduleEoq($eoq_id)
+    {
+        $this->schedule_eoq = $eoq_id;
+    }
+
 
     //Emit
 

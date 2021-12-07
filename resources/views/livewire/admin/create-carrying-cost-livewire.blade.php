@@ -3,14 +3,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold">Tambah Order Cost</h5>
+                    <h5 class="modal-title fw-bold">Tambah Biaya Perawatan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form wire:submit.prevent='store'>
                     <div class="modal-body">
 
                         <div class="mb-3">
-                            <label for="">Nama Biaya Pemesanan</label>
+                            <label for="">Nama Biaya Perawatan</label>
                             <input wire:model='name' type="text" class="form-control">
                         </div>
                         <form action="">

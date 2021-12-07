@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Material;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +16,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+        $schedules = Schedule::all();
+        $materials = Material::all();
+        return view('admin.dashboard.index',compact('schedules','materials'));
     }
 
     /**

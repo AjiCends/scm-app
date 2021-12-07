@@ -15,4 +15,9 @@ class Eoq extends Model
     {
         return $this->belongsTo(Material::class,'material_id');
     }
+
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class,'eoq_id','id');
+    }
 }

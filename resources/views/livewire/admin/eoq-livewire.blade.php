@@ -73,7 +73,9 @@
                         <td>{{ $item->eoq }}</td>
                         <td>{{ $item->frekwensi }}</td>
                         <td class="d-flex">
-                            <button class="btn btn-dark mx-2">Buat Jadwal</button>
+                            <button class="btn btn-dark mx-2" data-bs-toggle="modal" data-bs-target="#createSchedule" wire:click="setScheduleEoq({{ $item->id }})">
+                                Buat Jadwal
+                            </button>
                             <button class="btn btn-dark mx-2" wire:click="deleteEoq('{{ $item->id }}')"><i class="fas fa-trash"></i> Hapus</button>
                         </td>
                     </tr>
@@ -81,5 +83,27 @@
             </tbody>
         </table>
     </div>
-
+    
+    <!-- Modal -->
+    <div class="modal fade" id="createSchedule" tabindex="-1" aria-labelledby="createScheduleLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="createScheduleLabel">Buat Jadwal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('jadwal.create',$schedule_eoq)}}" method="post">                
+                @csrf
+                <div class="modal-body">
+                    <label class="mb-2" for="first_date">Tanggal Mulai Belanja</label>
+                    <input type="datetime-local" class="form-control" id="first_date" name="first_date">                                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">Simpan</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>

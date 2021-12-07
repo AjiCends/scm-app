@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MaterialController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
 Route::get('/bahan-baku', [MaterialController::class,'index'])->name('bahan-baku.index');
 Route::get('/bahan-baku/store/{id}', [MaterialController::class,'show'])->name('bahan-baku.show');
+Route::post('/jadwal/create/{id}',[ScheduleController::class,'store'])->name('jadwal.create');

@@ -24,12 +24,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
 
 Route::middleware(RegisteredAuth::class)->group( function () {
-    Route::get('/bahan-baku', [MaterialController::class,'index'])->name('bahan-baku.index');
+    Route::get('/bahan-baku', [MaterialController::class,'index'])->name('bahan-baku.index');    
     Route::get('/bahan-baku/store/{id}', [MaterialController::class,'show'])->name('bahan-baku.show');
     Route::get('/pengguna', [UserController::class,'index'])->name('pengguna.index');
     Route::get('/pengguna/store/{id}', [UserController::class,'show'])->name('pengguna.show');

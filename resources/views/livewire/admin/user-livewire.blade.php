@@ -4,36 +4,36 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Gambar</th>
-                @can('edit material')
-                    <th scope="col">Aksi</th>                    
-                @endcan
+                <th scope="col">Email</th>
+                {{-- <th scope="col">Password</th> --}}
+                <th scope="col">Aksi</th>
             </tr>
         </thead>
         <tbody wire:ignore.self>            
-            @foreach ($materials as $item)                               
+            @foreach ($users as $item)                               
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->name }}</td>
-                    <td><a href="{{ asset('storage/' . $item->image) }}" target="_blank"><i
-                                class="fas fa-image text-dark"></i></a></td>
-
-                    @can('edit material')
-                        <td>                        
-                            <button class="btn btn-dark mx-2">
-                                <a class="text-decoration-none text-white" href="{{ route('bahan-baku.show',$item->id) }}"><i class="fas fa-eye"></i> Detail</a>
-                            </button>                                                                
-                            <button class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#modalBahanBaku{{ $item->id }}">
+                    <td>{{ $item->email }}</td>
+                    {{-- <td>{{ Crypt::decryptString($item->password) }}</td> --}}
+                    <td>
+                        {{-- <button class="btn btn-dark mx-2">
+                            <a class="text-decoration-none text-white" href="{{ route('pengguna.show',$item->id) }}"><i class="fas fa-eye"></i> Detail</a>
+                        </button> --}}
+                        @can('edit employee')
+                            <button class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#modalUserEdit{{ $item->id }}">
                                 <i class="fas fa-edit"></i> Edit
-                            </button>                                                                     
+                            </button>                             
+                        @endcan
+                        @can('delete employee')
                             <button class="btn btn-danger mx-2" wire:click="displayDeleteDialog('{{$item->name}}','{{$item->id}}')">
                             <i class="fas fa-trash"></i> Hapus
-                            </button>                                                                              
-                        </td>                        
-                    @endcan
+                            </button>                                                       
+                        @endcan
+                    </td>
                 </tr>                    
                 <div>
-                    @livewire('admin.edit-bahan-baku-livewire', [$item], key($item->id))                             
+                    @livewire('admin.edit-user-livewire', [$item], key($item->id))                             
                 </div>                                                                                                                        
             @endforeach            
             <div wire:loading wire:target='store'>

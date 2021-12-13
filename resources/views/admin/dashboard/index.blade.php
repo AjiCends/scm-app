@@ -12,7 +12,8 @@
                     <th>No</th>
                     <th>Nama Bahan Baku</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Jam</th>                
+                    <th>Jam</th>
+                    <th>Kuantitas</th>                
                 </thead>
                 <tbody>
                     @foreach ($schedules as $item)
@@ -21,6 +22,7 @@
                             <td>{{ $item->eoq->material->name }}</td>
                             <td>{{ date('d-m-Y', strtotime($item->order_date)) }}</td>
                             <td>{{ date('H:i', strtotime($item->order_date)) }}</td>
+                            <td>{{ $item->eoq->eoq }} Kg</td>
                         </tr>
                     @endforeach                
                 </tbody>

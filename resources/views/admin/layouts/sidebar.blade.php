@@ -14,55 +14,44 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#bahan-baku-collapse" aria-expanded="false">
-          Bahan Baku
-        </button>
-        <div class="collapse" id="bahan-baku-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
-            <li><a href="{{ route('bahan-baku.index') }}" class="link-dark rounded">Daftar Bahan Baku</a></li>            
-          </ul>
-        </div>
-      </li>
-      {{-- <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
-            <li><a href="#" class="link-dark rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark rounded">Annually</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New</a></li>
-            <li><a href="#" class="link-dark rounded">Processed</a></li>
-            <li><a href="#" class="link-dark rounded">Shipped</a></li>
-            <li><a href="#" class="link-dark rounded">Returned</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New...</a></li>
-            <li><a href="#" class="link-dark rounded">Profile</a></li>
-            <li><a href="#" class="link-dark rounded">Settings</a></li>
-            <li><a href="#" class="link-dark rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li> --}}
+      @can('view material')
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#bahan-baku-collapse" aria-expanded="false">
+            Bahan Baku
+          </button>
+          <div class="collapse" id="bahan-baku-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
+              <li><a href="{{ route('bahan-baku.index') }}" class="link-dark rounded">Daftar Bahan Baku</a></li>            
+            </ul>
+          </div>
+        </li>              
+      @endcan
+      @can('create employee')
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#pengguna-collapse" aria-expanded="false">
+            Pengguna
+          </button>
+          <div class="collapse" id="pengguna-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">            
+              <li><a href="{{ route('pengguna.index') }}" class="link-dark rounded">Daftar Karyawan</a></li>            
+            </ul>
+          </div>
+        </li>              
+      @endcan
     </ul>
+    <div class="d-flex" style="height: 75%">
+      <div class="mt-auto">
+        @if (Auth::check())
+        <h5 class="">{{ Auth::user()->name }}</h5>
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger text-white">Logout</button>          
+          </form>                           
+        @else
+          <a href="{{ route('login') }}" class="btn btn-dark text-white">Login</a>
+        @endif
+      </div>
+    </div>
   </div>
+
+

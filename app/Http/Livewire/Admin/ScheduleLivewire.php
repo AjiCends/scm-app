@@ -33,7 +33,7 @@ class ScheduleLivewire extends Component
     public function getSchedule()
     {
         $now = new DateTime();
-        $data = Schedule::where('order_date','>=',$now->format('d-m-Y'))->orderBy('order_date','asc')->get();        
+        $data = Schedule::where('order_date','>=',$now->format('Y-m-d'))->orderBy('order_date','asc')->get();        
         $this->schedules = $data;
 
     }

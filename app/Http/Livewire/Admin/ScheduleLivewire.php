@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Schedule;
+use DateTime;
 use Livewire\Component;
 
 class ScheduleLivewire extends Component
@@ -31,7 +32,8 @@ class ScheduleLivewire extends Component
 
     public function getSchedule()
     {
-        $data = Schedule::orderBy('order_date','asc')->get();        
+        $now = new DateTime();
+        $data = Schedule::where('order_date','>=',$now->format('d-m-Y H:i:s'))->orderBy('order_date','asc')->get();        
         $this->schedules = $data;
 
     }

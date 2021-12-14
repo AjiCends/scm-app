@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\MaterialController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Middleware\RegisteredAuth;

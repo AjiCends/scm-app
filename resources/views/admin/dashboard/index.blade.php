@@ -1,11 +1,14 @@
 @extends('admin.layouts.app')
 @section('content')
-<div class="">  
+<div class="">    
     <h3 class="wf-bold">Dashboard</h3>    
 </div>
 <div class="row">
     <div class="col-6 p-3">
-        @livewire('admin.schedule-livewire')
+        <div class="shadow p-3">
+            <h5>Jadwal Pembelian Bahan Baku</h5>  
+            @livewire('admin.schedule-livewire')
+        </div>
     </div>
     <div class="col-6 p-3">
         <div class="shadow p-3">

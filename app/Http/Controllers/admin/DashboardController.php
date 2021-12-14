@@ -15,8 +15,8 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $schedules = Schedule::all();
+    {        
+        $schedules = Schedule::where('order_date','>=',date('d-m-Y H:i:s'))->get();
         $materials = Material::all();
         return view('admin.dashboard.index',compact('schedules','materials'));
     }

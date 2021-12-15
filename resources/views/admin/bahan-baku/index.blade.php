@@ -23,7 +23,7 @@
         @livewire('admin.bahan-baku-livewire')      
     </div>
     <div>
-        @can('create material',)
+        @can('create material')
             @livewire('admin.create-bahan-baku-livewire')                  
         @endcan
     </div>    

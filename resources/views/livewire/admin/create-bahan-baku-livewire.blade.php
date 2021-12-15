@@ -15,7 +15,7 @@
                             <input wire:model.lazy='name' type="text" class="form-control" name="name">
                         </div>
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="image">Gambar</label>
                             <input wire:model.lazy='image' type="file" name="image" class="form-control">
                         </div>
@@ -25,7 +25,7 @@
                         </div>
                         @if ($image)
                             <img src="{{ $image->temporaryUrl() }}" class="img-fluid">
-                        @endif
+                        @endif --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

@@ -24,16 +24,16 @@ class CreateBahanBakuLivewire extends Component
         // dd($this->image);
         $this->validate([
             'name' => 'required|max:500',
-            'image' => 'required'            
+            // 'image' => 'required'            
         ]);
         
-        $imgStore = $this->image->storePublicly('public/bahan-baku');
-        $imgPath = substr($imgStore,7);        
+        // $imgStore = $this->image->storePublicly('public/bahan-baku');
+        // $imgPath = substr($imgStore,7);        
         
 
         $data = [
             'name' => $this->name,     
-            'image' => $imgPath
+            // 'image' => $imgPath
         ];
                 
 

@@ -17,13 +17,13 @@
                         <label for="image">Gambar</label>
                         <input wire:model='image' type="file" name="image" class="form-control">
                     </div>
-                    <p>Photo Preview:</p>
+                    {{-- <p>Photo Preview:</p>
                     <div wire:loading wire:target='image'>
                         <img src="{{ asset('gif/loading.gif') }}" alt="" width="100px" class="">
                     </div>
                     @if ($image)
                         <img src="{{ $image->temporaryUrl() }}" class="img-fluid">
-                    @endif                    
+                    @endif                     --}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

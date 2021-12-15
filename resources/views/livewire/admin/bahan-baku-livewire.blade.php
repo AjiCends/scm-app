@@ -15,8 +15,8 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->name }}</td>
-                    <td><a href="{{ asset('storage/' . $item->image) }}" target="_blank"><i
-                                class="fas fa-image text-dark"></i></a></td>
+                    {{-- <td><a href="{{ asset('storage/' . $item->image) }}" target="_blank"><i
+                                class="fas fa-image text-dark"></i></a></td> --}}
 
                     @can('edit material')
                         <td>                        

@@ -1,4 +1,16 @@
 <div>
+    @error('error')
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>        
+    @enderror 
+    @error('success')
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>        
+    @enderror 
     <div class="row">
         <div class="col-12 col-md-6 p-3">
             <div class="d-flex shadow p-3">
@@ -47,9 +59,9 @@
                 <label for="frekwensi" class="form-label fw-bold">Frekwensi Beli</label>
                 <input wire:model='frekwensi' id="frekwensi" type="number" class="form-control" disabled style="background: white">                                        
             </div>
-        </div>
+        </div>        
         <div class="col-12">
-            <button type="submit" class="btn btn-dark shadow mt-3 w-100" wire:>Simpan Perhitungan</button>            
+            <button type="submit" class="btn btn-dark shadow mt-3 w-100">Simpan Perhitungan</button>           
         </div>        
     </form>
 

@@ -38,10 +38,11 @@ class CreateOrderCostLivewire extends Component
 
         try {
             $orderCost = OrderCost::create($data);            
+            session()->flash('success', 'Data Biaya Pemesanan(OC) berhasil ditambah');                        
             $this->resetInput();            
-            $this->emit('postOrderCost',$orderCost);
-        } catch (\Throwable $th) {
-            dd('error post oc');
+            $this->emit('postOrderCost',$orderCost);            
+        } catch (\Throwable $th) {            
+            session()->flash('Error', 'Data Biaya Pemesanan(OC) gagal ditambah');
         }
     }
 

@@ -16,15 +16,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="email">email</label>
-                            <input wire:model.lazy='email' type="text" class="form-control" name="name">
+                            <input wire:model.lazy='email' type="text" class="form-control" name="email">
                         </div>
                         <div class="mb-3">
                             <label for="password">password</label>
-                            <input wire:model.lazy='password' type="password" class="form-control" name="name">
+                            <input wire:model.lazy='password' type="password" class="form-control" name="password">
                         </div>
                         <div class="mb-3">
                             <label for="password">konfirmasi password</label>
-                            <input wire:model.lazy='confirm_password' type="password" class="form-control" name="name">
+                            <input wire:model.lazy='confirm_password' type="password" class="form-control" name="confirm_password">
                         </div>                             
                     </div>
                     <div class="modal-footer">

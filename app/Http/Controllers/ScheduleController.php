@@ -18,7 +18,7 @@ class ScheduleController extends Controller
         $frekwensi = $eoq->frekwensi;
         
         try {
-            for ($i = 1; $i <= $frekwensi; $i++) { 
+            for ($i = 0; $i < $frekwensi; $i++) { 
                 $day = " +".$i . " day";            
                 $order_date = date('y-m-d H:i:s',strtotime($data['first_date'].$day));
                 $db =[
@@ -30,6 +30,7 @@ class ScheduleController extends Controller
 
             return redirect()->route('admin.dashboard');
         } catch (\Throwable $th) {
+            
             //throw $th;
         }
 

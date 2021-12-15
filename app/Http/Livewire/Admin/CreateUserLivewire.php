@@ -24,20 +24,21 @@ class CreateUserLivewire extends Component
             'email' => 'required|unique:users,email',
             'password' => 'required',
             'confirm_password' => 'required',
-        ]);                
+        ]);                   
 
         $data = [
             'name' => $this->name,                 
             'email' => $this->email,     
-            'password' => bcrypt($this->password),     
-            'confirm_password' => $this->confirm_password,     
+            'password' => bcrypt($this->password),                     
         ];
 
-        if($data['password'] != $data['confirm_password']) {
+        if($this->password != $this->confirm_password) {
+            dd('ga sama nih');
             session()->flash('error', 'Password tidak terkonfirmasi sama');            
         }else{
             try {                        
-                $user = User::create($data);            
+                $user = User::create($data);
+                $user->assignRole('employee');            
                 $this->resetInput();
                 $this->emit('userAdded',$user);            
             } catch (\Throwable $th) {

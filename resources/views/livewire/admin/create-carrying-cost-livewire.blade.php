@@ -12,11 +12,17 @@
                         <div class="mb-3">
                             <label for="">Nama Biaya Perawatan</label>
                             <input wire:model='name' type="text" class="form-control">
+                            @error('name')
+                                <span class="text-danger">kolom nama wajib diisi !</span>
+                            @enderror
                         </div>
                         <form action="">
                             <div class="mb-3">
                                 <label for="">Biaya</label>
                                 <input wire:model='cost' type="number" class="form-control">
+                                @error('cost')
+                                    <span class="text-danger">kolom biaya wajib diisi !</span>
+                                @enderror
                             </div>
                     </div>
                     <div class="modal-footer">

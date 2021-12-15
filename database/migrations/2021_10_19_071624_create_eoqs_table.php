@@ -19,7 +19,7 @@ class CreateEoqsTable extends Migration
             $table->decimal('material_need')->nullable();
             $table->decimal('frekwensi')->nullable();
             $table->unsignedBigInteger('material_id')->nullable();
-            $table->foreign('material_id')->references('id')->on('materials')->onDelete('set null');
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

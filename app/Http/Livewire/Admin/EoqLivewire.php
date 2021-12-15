@@ -25,7 +25,7 @@ class EoqLivewire extends Component
     ];
     
     public function mount($material)
-    {           
+    {  
         $this->material = $material;
     }
 
@@ -40,7 +40,7 @@ class EoqLivewire extends Component
 
     public function countEoq($amount,$order_costs,$carrying_costs)
     {           
-        if (is_numeric($amount) && $amount != 0 && $order_costs != 0 && $carrying_costs) {
+        if (is_numeric($amount) && $amount != 0 && $order_costs != 0 && $carrying_costs != 0) {
 
             $eoq = sqrt(2 * $amount * $order_costs / $carrying_costs);
 
@@ -51,6 +51,7 @@ class EoqLivewire extends Component
         }else{
             $this->eoq = null;
             $this->frekwensi = null;
+            
         }
     }
 
@@ -61,15 +62,19 @@ class EoqLivewire extends Component
     }
 
     public function saveEoq()
-    {
-        $data = [
-            'eoq' => $this->eoq,
-            'material_need' => floatval($this->amount),
-            'frekwensi' => $this->frekwensi,
-            'material_id' => $this->material->id,
-        ];        
-
-        $postEoq = Eoq::create($data);        
+    {   
+        if($this->order_costs != 0 && $this->carrying_costs){
+            $data = [
+                'eoq' => $this->eoq,
+                'material_need' => floatval($this->amount),
+                'frekwensi' => $this->frekwensi,
+                'material_id' => $this->material->id,
+            ];        
+    
+            $postEoq = Eoq::create($data);        
+        }else{
+            $this->addError('error','EOQ tidak boleh kosong silakan isi Data Biaya Pemesanan dan Biaya Perawatan terlebih dahulu');
+        }        
     }
 
     public function deleteEoq($id)

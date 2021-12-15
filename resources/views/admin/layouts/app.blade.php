@@ -17,9 +17,9 @@
 <body>
     @yield('loader')
     @include('admin.layouts.navbar')
-    <div class="container-fluid">        
+    <div class="container-fluid">       
         @include('admin.layouts.sidebar')
-        <div class="p-3 content shadow">
+        <div class="p-3 content shadow">            
             @yield('content')        
         </div>        
     </div> 
@@ -31,6 +31,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @livewireScripts()
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(".alert").fadeTo(60, 20).slideUp(20, function(){
+            $(".alert").slideUp(20);
+        });
+    </script>
     @stack('scripts')
 </body>
 </html>
